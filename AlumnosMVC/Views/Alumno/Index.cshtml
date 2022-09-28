@@ -1,0 +1,53 @@
+﻿
+@using AlumnosMVC.Models
+@model List<AlumnosMVC.Models.Alumnos>
+    @{ 
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+<h2>Lista Alumnos</h2>
+<p>@Html.ActionLink("Lista Alumnos", "Index")</p>
+
+<div class="container">
+    <table class="table table-bordered table-condensed table-responsive table-hover form-horizontal">
+        <tr>
+            <td>Id</td>
+            <td>Nombre</td>
+            <td>Primer Apellido</td>
+            <td>Segundo Apellido</td>
+            <td>Correo</td>
+            <td>Telefono</td>
+            <td>Fecha de Nacimiento</td>
+            <td>Curp</td>
+            <td>Sueldo</td>
+            <td>IdEstado</td>
+            <td>IdEstatus</td>
+        </tr>
+        @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(mItem => item.id)</td>
+                        <td>@Html.DisplayFor(mItem => item.nombre)</td>
+                        <td>@Html.DisplayFor(mItem => item.primerApellido)</td>
+                        <td>@Html.DisplayFor(mItem => item.segundoApellido)</td>
+                        <td>@Html.DisplayFor(mItem => item.correo)</td>
+                        <td>@Html.DisplayFor(mItem => item.telefono)</td>
+                        <td>@Html.DisplayFor(mItem => item.fechaNacimiento)</td>
+                        <td>@Html.DisplayFor(mItem => item.curp)</td>
+                        <td>@Html.DisplayFor(mItem => item.sueldo)</td>
+                        <td>@Html.DisplayFor(mItem => item.Estados.nombre)</td>
+                        <td>@Html.DisplayFor(mItem => item.EstatusAlumnos.Nombre)</td>
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-warning btn-sm" })</td>
+                        <td>@Html.ActionLink("Details", "Details", new { id = item.id }, new {@class="btn btn-success btn-sm"})</td>
+                        <td>@Html.ActionLink("Eliminar", "Eliminar", new { id = item.id }, new {@class="btn btn-danger btn-sm"})</td>
+                        
+
+                    </tr>
+                }
+    </table>
+</div>
+<div class="container">
+    @Html.ActionLink("Crear un nuevo Alumno", "Create", null, new { @class="btn btn-primary btn-block" })
+</div>
+
+
